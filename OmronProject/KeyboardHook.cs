@@ -2,40 +2,34 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-//using System.
-
+// ReSharper disable once CheckNamespace
 public sealed class KeyboardHook : IDisposable
 {
     // Registers a hot key with Windows.
-
-    private readonly Window _window = new Window();
-    private int _currentId;
+    private readonly Window window = new Window();
+    private int currentId;
 
     public KeyboardHook()
     {
         // register the event of the inner native window.
-        _window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
+        this.window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
         {
             if (KeyPressed != null)
                 KeyPressed(this, args);
         };
     }
 
-    #region IDisposable Members
-
     public void Dispose()
     {
         // unregister all the registered hot keys.
-        for (int i = _currentId; i > 0; i--)
+        for (int i = this.currentId; i > 0; i--)
         {
-            UnregisterHotKey(_window.Handle, i);
+            UnregisterHotKey(this.window.Handle, i);
         }
 
         // dispose the inner native window.
-        _window.Dispose();
+        this.window.Dispose();
     }
-
-    #endregion
 
     [DllImport("user32.dll")]
     private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -52,10 +46,10 @@ public sealed class KeyboardHook : IDisposable
     public void RegisterHotKey(ModifierKeys modifier, Keys key)
     {
         // increment the counter.
-        _currentId = _currentId + 1;
+        this.currentId = this.currentId + 1;
 
         // register the hot key.
-        if (!RegisterHotKey(_window.Handle, _currentId, (uint) modifier, (uint) key))
+        if (!RegisterHotKey(this.window.Handle, this.currentId, (uint) modifier, (uint) key))
             throw new InvalidOperationException("Couldn’t register the hot key.");
     }
 
@@ -64,14 +58,12 @@ public sealed class KeyboardHook : IDisposable
     /// </summary>
     public event EventHandler<KeyPressedEventArgs> KeyPressed;
 
-    #region Nested type: Window
-
     /// <summary>
     ///     Represents the window that is used internally to get the messages.
     /// </summary>
-    private class Window : NativeWindow, IDisposable
+    private sealed class Window : NativeWindow, IDisposable
     {
-        private static int WM_HOTKEY = 0x0312;
+        private const int WM_HOTKEY = 0x0312;
 
         public Window()
         {
@@ -79,14 +71,10 @@ public sealed class KeyboardHook : IDisposable
             CreateHandle(new CreateParams());
         }
 
-        #region IDisposable Members
-
         public void Dispose()
         {
             DestroyHandle();
         }
-
-        #endregion
 
         /// <summary>
         ///     Overridden to get the notifications.
@@ -112,7 +100,6 @@ public sealed class KeyboardHook : IDisposable
         public event EventHandler<KeyPressedEventArgs> KeyPressed;
     }
 
-    #endregion
 }
 
 /// <summary>
@@ -120,23 +107,23 @@ public sealed class KeyboardHook : IDisposable
 /// </summary>
 public class KeyPressedEventArgs : EventArgs
 {
-    private readonly Keys _key;
-    private readonly ModifierKeys _modifier;
+    private readonly Keys key;
+    private readonly ModifierKeys modifier;
 
     internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)
     {
-        _modifier = modifier;
-        _key = key;
+        this.modifier = modifier;
+        this.key = key;
     }
 
     public ModifierKeys Modifier
     {
-        get { return _modifier; }
+        get { return this.modifier; }
     }
 
     public Keys Key
     {
-        get { return _key; }
+        get { return this.key; }
     }
 }
 
