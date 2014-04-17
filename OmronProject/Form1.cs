@@ -67,33 +67,33 @@ namespace OmronProject
         {
         }
 
-        private void setActiveColorPanel(Panel panel)
+        private static void setActiveColorPanel(Control panel)
         {
             panel.BackColor = Color.Gray;
-            foreach (Control i in panel.Controls)
+            foreach (Control control in panel.Controls)
             {
-                if (i.GetType() == typeof (Label))
-                    i.ForeColor = Color.Lime;
-                if (i.GetType() == typeof (OmronEdit))
+                if (control is Label)
+                    control.ForeColor = Color.Lime;
+                if (control is OmronEdit)
                 {
-                    i.BackColor = Color.DarkKhaki;
-                    i.Enabled = true;
+                    control.BackColor = Color.DarkKhaki;
+                    control.Enabled = true;
                 }
             }
         }
 
-        private void setPassiveColorPanel(Control panel)
+        private static void setPassiveColorPanel(Control panel)
         {
             panel.BackColor = SystemColors.Control;
-            foreach (Control i in panel.Controls)
+            foreach (Control control in panel.Controls)
             {
-                if (i.GetType() == typeof (Label))
-                    i.ForeColor = Color.Black;
-                if (i.GetType() == typeof (OmronEdit))
+                if (control is  Label)
+                    control.ForeColor = Color.Black;
+                if (control is OmronEdit)
                 {
-                    i.BackColor = Color.White;
+                    control.BackColor = Color.White;
                     // i.Enabled = false;
-                    var re = (OmronEdit) i;
+                    var re = (OmronEdit) control;
                     re.ReadOnly = true;
                 }
             }

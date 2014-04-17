@@ -18,7 +18,7 @@
             Norma,
             Proc,
             WaitSend,
-            Err,
+            Error,
             NoData
         }
 
@@ -41,7 +41,7 @@
         }
 
 
-        private bool _nonDigitEntered;
+        private bool nonDigitEntered;
 
         public OmronEdit()
         {
@@ -59,6 +59,21 @@
         public OmronEdit FieldUp { get; set; }
         public OmronEdit FieldDown { get; set; }
 
+#region floatmask
+        //private void SetFloatMask(KeyPressEventArgs e)
+        //{
+        //    var c = e.KeyChar;
+        //    bool b = (c == '\b' || ('0' <= c && c <= '9') || c == ',' || c=='.');
+        //    if (!b)
+        //        e.Handled = true;
+        //    if (this.Text.IndexOf(',') > 1 && c == ',')
+        //        e.Handled = true;
+        //    if (this.Text.IndexOf('.') > 1 && c == '.')
+        //        e.Handled = true;
+
+        //}
+#endregion
+
 
         private void OmronEditKeyPress(object sender, KeyPressEventArgs e)
         {
@@ -75,13 +90,15 @@
                 e.Handled = true;
             if (this.SelectionStart != 0 && e.KeyChar == '-')
                 e.Handled = true;
-            if (this._nonDigitEntered)
+            if (this.nonDigitEntered)
                 e.Handled = true;
+
+          
         }
 
         private void OmronEditKeyDown(object sender, KeyEventArgs e)
         {
-            this._nonDigitEntered = false;
+            this.nonDigitEntered = false;
             if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
             {
                 if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
@@ -89,11 +106,11 @@
                     if (e.KeyCode != Keys.Back && e.KeyCode != Keys.OemPeriod
                         && e.KeyCode != Keys.Oemcomma && e.KeyCode != Keys.OemMinus
                         && e.KeyCode != Keys.Decimal && e.KeyCode != Keys.Subtract)
-                        this._nonDigitEntered = true;
+                        this.nonDigitEntered = true;
                 }
                 /*    if (Text.IndexOf('.')>=0)
                     if (Text.Substring(Text.IndexOf('.')).Length > 2)
-                        _nonDigitEntered = true;*/
+                        nonDigitEntered = true;*/
             }
             switch (e.KeyCode)
             {
