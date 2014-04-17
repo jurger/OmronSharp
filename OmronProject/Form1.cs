@@ -74,7 +74,7 @@ namespace OmronProject
             {
                 if (i.GetType() == typeof (Label))
                     i.ForeColor = Color.Lime;
-                if (i.GetType() == typeof (OmronEdit.OmronEdit))
+                if (i.GetType() == typeof (OmronEdit))
                 {
                     i.BackColor = Color.DarkKhaki;
                     i.Enabled = true;
@@ -89,11 +89,11 @@ namespace OmronProject
             {
                 if (i.GetType() == typeof (Label))
                     i.ForeColor = Color.Black;
-                if (i.GetType() == typeof (OmronEdit.OmronEdit))
+                if (i.GetType() == typeof (OmronEdit))
                 {
                     i.BackColor = Color.White;
                     // i.Enabled = false;
-                    var re = (OmronEdit.OmronEdit) i;
+                    var re = (OmronEdit) i;
                     re.ReadOnly = true;
                 }
             }

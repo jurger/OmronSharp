@@ -73,10 +73,19 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="OmronEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OmronEdit.Designer.cs">
+      <DependentUpon>OmronEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OmronEdit.resx">
+      <DependentUpon>OmronEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,12 +107,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OmronEdit\OmronEdit.csproj">
-      <Project>{D66B148D-F819-4258-8204-FBF80AE736D4}</Project>
-      <Name>OmronEdit</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
