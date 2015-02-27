@@ -4,25 +4,27 @@ using System.Windows.Forms;
 
 namespace OmronProject
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        private readonly KeyboardHook _hook = new KeyboardHook();
+        private readonly KeyboardHook hook = new KeyboardHook();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             SetActiveDno();
-            _hook.KeyPressed += HookKeyPressed;
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F1);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F2);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F3);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F4);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F5);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F6);
+            hook.KeyPressed += HookKeyPressed;
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F1);
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F2);
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F3);
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F4);
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F5);
+            hook.RegisterHotKey(new ModifierKeys(), Keys.F6);
             /*_hook.RegisterHotKey(new ModifierKeys(), Keys.Up);
             _hook.RegisterHotKey(new ModifierKeys(), Keys.Down);
             _hook.RegisterHotKey(new ModifierKeys(), Keys.Left);
             _hook.RegisterHotKey(new ModifierKeys(), Keys.Right);*/
+            heater1.OmronEdit1.Text = "asdas";
+            
         }
 
         private void HookKeyPressed(object sender, KeyPressedEventArgs e)
@@ -31,6 +33,7 @@ namespace OmronProject
             {
                 case Keys.F1:
                     SetActiveDno();
+                    
                     break;
                 case Keys.F2:
                     SetActiveBok();
@@ -65,9 +68,11 @@ namespace OmronProject
 
         private void OmronEdit3TextChanged(object sender, EventArgs e)
         {
+            
         }
+        
 
-        private static void setActiveColorPanel(Control panel)
+        private static void SetActiveColorPanel(Control panel)
         {
             panel.BackColor = Color.Gray;
             foreach (Control control in panel.Controls)
@@ -82,7 +87,7 @@ namespace OmronProject
             }
         }
 
-        private static void setPassiveColorPanel(Control panel)
+        private static void SetPassiveColorPanel(Control panel)
         {
             panel.BackColor = SystemColors.Control;
             foreach (Control control in panel.Controls)
@@ -101,51 +106,51 @@ namespace OmronProject
 
         private void SetActiveDno()
         {
-            setActiveColorPanel(panel1);
-            setPassiveColorPanel(panel2);
-            setPassiveColorPanel(panel3);
-            setPassiveColorPanel(panel4);
-            setPassiveColorPanel(panel5);
+            SetActiveColorPanel(panel1);
+            SetPassiveColorPanel(panel2);
+            SetPassiveColorPanel(panel3);
+            SetPassiveColorPanel(panel4);
+            SetPassiveColorPanel(panel5);
             TTaskDno.Focus();
         }
 
         private void SetActiveBok()
         {
-            setActiveColorPanel(panel2);
-            setPassiveColorPanel(panel1);
-            setPassiveColorPanel(panel3);
-            setPassiveColorPanel(panel4);
-            setPassiveColorPanel(panel5);
+            SetActiveColorPanel(panel2);
+            SetPassiveColorPanel(panel1);
+            SetPassiveColorPanel(panel3);
+            SetPassiveColorPanel(panel4);
+            SetPassiveColorPanel(panel5);
             TTaskBok.Focus();
         }
 
         private void SetActivePit()
         {
-            setActiveColorPanel(panel3);
-            setPassiveColorPanel(panel1);
-            setPassiveColorPanel(panel2);
-            setPassiveColorPanel(panel4);
-            setPassiveColorPanel(panel5);
+            SetActiveColorPanel(panel3);
+            SetPassiveColorPanel(panel1);
+            SetPassiveColorPanel(panel2);
+            SetPassiveColorPanel(panel4);
+            SetPassiveColorPanel(panel5);
             TTaskPit.Focus();
         }
 
         private void SetActiveAlg()
         {
-            setActiveColorPanel(panel4);
-            setPassiveColorPanel(panel1);
-            setPassiveColorPanel(panel3);
-            setPassiveColorPanel(panel2);
-            setPassiveColorPanel(panel5);
+            SetActiveColorPanel(panel4);
+            SetPassiveColorPanel(panel1);
+            SetPassiveColorPanel(panel3);
+            SetPassiveColorPanel(panel2);
+            SetPassiveColorPanel(panel5);
             TTaskAlg.Focus();
         }
 
         private void SetActiveGp()
         {
-            setActiveColorPanel(panel5);
-            setPassiveColorPanel(panel1);
-            setPassiveColorPanel(panel3);
-            setPassiveColorPanel(panel2);
-            setPassiveColorPanel(panel4);
+            SetActiveColorPanel(panel5);
+            SetPassiveColorPanel(panel1);
+            SetPassiveColorPanel(panel3);
+            SetPassiveColorPanel(panel2);
+            SetPassiveColorPanel(panel4);
             TTaskAlg.Focus();
         }
 

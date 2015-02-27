@@ -1,11 +1,16 @@
-﻿namespace OmronProject
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace OmronProject
 {
     partial class OmronEdit
     {
         /// <summary>
         /// Требуется переменная конструктора.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Освободить все используемые ресурсы.
@@ -32,12 +37,12 @@
             // 
             // OmronEdit
             // 
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.Enter += new System.EventHandler(this.OmronEditEnter);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OmronEditKeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OmronEditKeyPress);
-            this.Leave += new System.EventHandler(this.OmronEditLeave);
+            this.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
+            this.Margin = new Padding(3, 1, 3, 1);
+            this.Enter += new EventHandler(this.OmronEditEnter);
+            this.KeyDown += new KeyEventHandler(this.OmronEditKeyDown);
+            this.KeyPress += new KeyPressEventHandler(this.OmronEditKeyPress);
+            this.Leave += new EventHandler(this.OmronEditLeave);
             this.ResumeLayout(false);
 
         }

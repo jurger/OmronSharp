@@ -12,7 +12,7 @@ public sealed class KeyboardHook : IDisposable
     public KeyboardHook()
     {
         // register the event of the inner native window.
-        this.window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
+        window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
         {
             if (KeyPressed != null)
                 KeyPressed(this, args);
@@ -22,13 +22,13 @@ public sealed class KeyboardHook : IDisposable
     public void Dispose()
     {
         // unregister all the registered hot keys.
-        for (int i = this.currentId; i > 0; i--)
+        for (int i = currentId; i > 0; i--)
         {
-            UnregisterHotKey(this.window.Handle, i);
+            UnregisterHotKey(window.Handle, i);
         }
 
         // dispose the inner native window.
-        this.window.Dispose();
+        window.Dispose();
     }
 
     [DllImport("user32.dll")]
@@ -46,10 +46,10 @@ public sealed class KeyboardHook : IDisposable
     public void RegisterHotKey(ModifierKeys modifier, Keys key)
     {
         // increment the counter.
-        this.currentId = this.currentId + 1;
+        currentId = currentId + 1;
 
         // register the hot key.
-        if (!RegisterHotKey(this.window.Handle, this.currentId, (uint) modifier, (uint) key))
+        if (!RegisterHotKey(window.Handle, currentId, (uint) modifier, (uint) key))
             throw new InvalidOperationException("Couldn’t register the hot key.");
     }
 
@@ -118,12 +118,12 @@ public class KeyPressedEventArgs : EventArgs
 
     public ModifierKeys Modifier
     {
-        get { return this.modifier; }
+        get { return modifier; }
     }
 
     public Keys Key
     {
-        get { return this.key; }
+        get { return key; }
     }
 }
 

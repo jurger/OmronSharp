@@ -1,11 +1,33 @@
-﻿namespace OmronProject
-{
-    using System;
-    using System.Drawing;
-    using System.Windows.Forms;
+﻿// ReSharper disable InconsistentNaming
 
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace OmronProject
+{
     public partial class OmronEdit : TextBox
     {
+        int WM_LBUTTONDOWN = 0x0201; //513
+        int WM_LBUTTONUP = 0x0202; //514
+        int WM_LBUTTONDBLCLK = 0x0203; //515
+
+        protected override void WndProc(ref Message m)
+        {
+
+            if (m.Msg == WM_LBUTTONDOWN ||
+               m.Msg == WM_LBUTTONUP ||
+               m.Msg == WM_LBUTTONDBLCLK // && Your State To Check
+               )
+            {
+                //Dont dispatch message
+                return;
+            }
+
+            //Dispatch as usual
+            base.WndProc(ref m);
+        }
+        
         public enum TActivity
         {
             ActInAct,
@@ -45,7 +67,16 @@
 
         public OmronEdit()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+         //   this.Events.RemoveHandler(this,OnMouseClick);
+            
+        }
+       
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+          //  ReadOnly = true;
+            
         }
 
         public int MinError { get; set; }
@@ -55,9 +86,14 @@
         public TTypeContent TypeContent { get; set; }
         public TActivity Activity { get; set; }
         public TState State { get; set; }
-        public TWindow Window { get; set; }
+        public  TWindow Window { get; set; }
         public OmronEdit FieldUp { get; set; }
         public OmronEdit FieldDown { get; set; }
+#pragma warning disable 414
+        private bool f2pressed;
+        private bool UpDownPressed;
+#pragma warning restore 414
+        public TWindow OldWindow;
 
 #region floatmask
         //private void SetFloatMask(KeyPressEventArgs e)
@@ -80,17 +116,17 @@
             if (e.KeyChar == ',')
             {
                 e.Handled = true;
-                if (this.Text.IndexOf('.') < 0 && this.SelectionStart != 0)
+                if (Text.IndexOf('.') < 0 && SelectionStart != 0)
                 {
-                    this.Text += @".";
-                    this.SelectionStart = this.Text.Length;
+                    Text += @".";
+                    SelectionStart = Text.Length;
                 }
             }
-            if ((this.Text.IndexOf('.') >= 0 || this.SelectionStart == 0) && e.KeyChar == '.')
+            if ((Text.IndexOf('.') >= 0 || SelectionStart == 0) && e.KeyChar == '.')
                 e.Handled = true;
-            if (this.SelectionStart != 0 && e.KeyChar == '-')
+            if (SelectionStart != 0 && e.KeyChar == '-')
                 e.Handled = true;
-            if (this.nonDigitEntered)
+            if (nonDigitEntered)
                 e.Handled = true;
 
           
@@ -98,7 +134,7 @@
 
         private void OmronEditKeyDown(object sender, KeyEventArgs e)
         {
-            this.nonDigitEntered = false;
+            nonDigitEntered = false;
             if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
             {
                 if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
@@ -106,7 +142,7 @@
                     if (e.KeyCode != Keys.Back && e.KeyCode != Keys.OemPeriod
                         && e.KeyCode != Keys.Oemcomma && e.KeyCode != Keys.OemMinus
                         && e.KeyCode != Keys.Decimal && e.KeyCode != Keys.Subtract)
-                        this.nonDigitEntered = true;
+                        nonDigitEntered = true;
                 }
                 /*    if (Text.IndexOf('.')>=0)
                     if (Text.Substring(Text.IndexOf('.')).Length > 2)
@@ -115,22 +151,40 @@
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    this.FieldUp.Focus();
+                    FieldUp.Focus();
+                    UpDownPressed = true;
+                    //f2pressed = true;
+                    
                     break;
                 case Keys.Down:
-                    this.FieldDown.Focus();
+                    FieldDown.Focus();
+                    UpDownPressed = true;
+                    //f2pressed = true;
+                    
                     break;
+                case Keys.F2:
+                    f2pressed = true;
+                    //MessageBox.Show(Window + " " +OldWindow);
+                    break;
+
             }
         }
 
         private void OmronEditEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.Yellow;
+            BackColor = Color.Yellow;
+
+//            UpDownPressed = false;
         }
 
         private void OmronEditLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.DarkKhaki;
+            if (Window == TWindow.Dno && f2pressed )
+                BackColor = Color.DarkKhaki;
+            
+            if (ForeColor == Color.DarkKhaki)
+                ForeColor = Color.DarkKhaki;
+            //OldWindow = Window;
         }
     }
 }
