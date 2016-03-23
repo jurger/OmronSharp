@@ -6,29 +6,28 @@ using System.Windows.Forms;
 public sealed class KeyboardHook : IDisposable
 {
     // Registers a hot key with Windows.
-    private readonly Window window = new Window();
-    private int currentId;
+    private readonly Window _window = new Window();
+    private int _currentId;
 
     public KeyboardHook()
     {
         // register the event of the inner native window.
-        this.window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
+        _window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
         {
-            if (KeyPressed != null)
-                KeyPressed(this, args);
+            KeyPressed?.Invoke(this, args);
         };
     }
 
     public void Dispose()
     {
         // unregister all the registered hot keys.
-        for (int i = this.currentId; i > 0; i--)
+        for (var i = _currentId; i > 0; i--)
         {
-            UnregisterHotKey(this.window.Handle, i);
+            UnregisterHotKey(_window.Handle, i);
         }
 
         // dispose the inner native window.
-        this.window.Dispose();
+        _window.Dispose();
     }
 
     [DllImport("user32.dll")]
@@ -46,10 +45,10 @@ public sealed class KeyboardHook : IDisposable
     public void RegisterHotKey(ModifierKeys modifier, Keys key)
     {
         // increment the counter.
-        this.currentId = this.currentId + 1;
+        _currentId = _currentId + 1;
 
         // register the hot key.
-        if (!RegisterHotKey(this.window.Handle, this.currentId, (uint) modifier, (uint) key))
+        if (!RegisterHotKey(_window.Handle, _currentId, (uint) modifier, (uint) key))
             throw new InvalidOperationException("Couldn’t register the hot key.");
     }
 
@@ -63,6 +62,7 @@ public sealed class KeyboardHook : IDisposable
     /// </summary>
     private sealed class Window : NativeWindow, IDisposable
     {
+        // ReSharper disable once InconsistentNaming
         private const int WM_HOTKEY = 0x0312;
 
         public Window()
@@ -92,8 +92,7 @@ public sealed class KeyboardHook : IDisposable
                 var modifier = (ModifierKeys) ((int) m.LParam & 0xFFFF);
 
                 // invoke the event to notify the parent.
-                if (KeyPressed != null)
-                    KeyPressed(this, new KeyPressedEventArgs(modifier, key));
+                KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
             }
         }
 
@@ -107,24 +106,15 @@ public sealed class KeyboardHook : IDisposable
 /// </summary>
 public class KeyPressedEventArgs : EventArgs
 {
-    private readonly Keys key;
-    private readonly ModifierKeys modifier;
-
     internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)
     {
-        this.modifier = modifier;
-        this.key = key;
+        Modifier = modifier;
+        Key = key;
     }
 
-    public ModifierKeys Modifier
-    {
-        get { return this.modifier; }
-    }
+    public ModifierKeys Modifier { get; }
 
-    public Keys Key
-    {
-        get { return this.key; }
-    }
+    public Keys Key { get; }
 }
 
 /// <summary>

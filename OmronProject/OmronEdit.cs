@@ -1,9 +1,12 @@
-﻿namespace OmronProject
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace OmronProject
 {
     using System;
     using System.Drawing;
     using System.Windows.Forms;
 
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public partial class OmronEdit : TextBox
     {
         public enum TActivity
@@ -45,7 +48,7 @@
 
         public OmronEdit()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public int MinError { get; set; }
@@ -58,6 +61,7 @@
         public TWindow Window { get; set; }
         public OmronEdit FieldUp { get; set; }
         public OmronEdit FieldDown { get; set; }
+        
 
 #region floatmask
         //private void SetFloatMask(KeyPressEventArgs e)
@@ -80,17 +84,17 @@
             if (e.KeyChar == ',')
             {
                 e.Handled = true;
-                if (this.Text.IndexOf('.') < 0 && this.SelectionStart != 0)
+                if (Text.IndexOf('.') < 0 && SelectionStart != 0)
                 {
-                    this.Text += @".";
-                    this.SelectionStart = this.Text.Length;
+                    Text += @".";
+                    SelectionStart = Text.Length;
                 }
             }
-            if ((this.Text.IndexOf('.') >= 0 || this.SelectionStart == 0) && e.KeyChar == '.')
+            if ((Text.IndexOf('.') >= 0 || SelectionStart == 0) && e.KeyChar == '.')
                 e.Handled = true;
-            if (this.SelectionStart != 0 && e.KeyChar == '-')
+            if (SelectionStart != 0 && e.KeyChar == '-')
                 e.Handled = true;
-            if (this.nonDigitEntered)
+            if (nonDigitEntered)
                 e.Handled = true;
 
           
@@ -98,7 +102,7 @@
 
         private void OmronEditKeyDown(object sender, KeyEventArgs e)
         {
-            this.nonDigitEntered = false;
+            nonDigitEntered = false;
             if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
             {
                 if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
@@ -106,7 +110,7 @@
                     if (e.KeyCode != Keys.Back && e.KeyCode != Keys.OemPeriod
                         && e.KeyCode != Keys.Oemcomma && e.KeyCode != Keys.OemMinus
                         && e.KeyCode != Keys.Decimal && e.KeyCode != Keys.Subtract)
-                        this.nonDigitEntered = true;
+                        nonDigitEntered = true;
                 }
                 /*    if (Text.IndexOf('.')>=0)
                     if (Text.Substring(Text.IndexOf('.')).Length > 2)
@@ -115,22 +119,22 @@
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    this.FieldUp.Focus();
+                    //FieldUp.Focus();
                     break;
                 case Keys.Down:
-                    this.FieldDown.Focus();
+                    //FieldDown.Focus();
                     break;
             }
         }
 
         private void OmronEditEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.Yellow;
+            BackColor = Color.Yellow;
         }
 
         private void OmronEditLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.DarkKhaki;
+            BackColor = Color.DarkKhaki;
         }
     }
 }
