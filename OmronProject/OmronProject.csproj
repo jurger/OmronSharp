@@ -71,25 +71,25 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardHook.cs" />
-    <Compile Include="OmronEdit.cs">
+    <Compile Include="OEdit.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OmronEdit.Designer.cs">
-      <DependentUpon>OmronEdit.cs</DependentUpon>
+    <Compile Include="OEdit.Designer.cs">
+      <DependentUpon>OEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="OmronPanel.cs">
+    <Compile Include="OPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OmronPanel.Designer.cs">
-      <DependentUpon>OmronPanel.cs</DependentUpon>
+    <Compile Include="OPanel.Designer.cs">
+      <DependentUpon>OPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OmronEdit.resx">
-      <DependentUpon>OmronEdit.cs</DependentUpon>
+    <EmbeddedResource Include="OEdit.resx">
+      <DependentUpon>OEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -32,18 +32,17 @@ namespace OmronProject
         private IEnumerable<Control> GetAll(Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();
-
-            
-            return controls.SelectMany(ctrl => GetAll(ctrl, type)).Concat(controls).Where(c => c.GetType() == type);
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                .Concat(controls).Where(c => c.GetType() == type);
         }
 
 
         private void HighlightHeater(int nHeater)
         {
-            foreach (var heater in GetAll(this,typeof(OmronPanel)) )
+            foreach (var heater in GetAll(this,typeof(OPanel)) )
             {
                // if (heater.GetType() != typeof (OmronPanel)) continue;
-                var pn = heater as OmronPanel;
+                var pn = heater as OPanel;
                 if (nHeater == pn.HeaterNumber)
                     pn.SetActiveColorPanel();
                 else
@@ -73,13 +72,14 @@ namespace OmronProject
                     HighlightHeater(5);
                     break;
                 case Keys.F8:
-                    //omronPanel1.SetActiveColorPanel();
                     HighlightHeater(8);
                     break;
                 case Keys.F9:
                     HighlightHeater(9);
-                    //omronPanel2.SetActiveColorPanel();
+                    break;
 
+                case Keys.Escape:
+                    Application.Exit();
                     break;
                     /*      case Keys.Up:
                     if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
