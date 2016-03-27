@@ -82,13 +82,11 @@ namespace OmronProject
 
         public OEdit()
         {
-            
+
             InitializeComponent();
             
             GotFocus += FieldGotFocus;
             Enabled = true; //TODO: Need fix in designer
-    //        switch (TypeContent)
-            
             
 
     }
@@ -102,48 +100,29 @@ namespace OmronProject
         }
 
 
-
-        #region floatmask
-        //private void SetFloatMask(KeyPressEventArgs e)
-        //{
-        //    var c = e.KeyChar;
-        //    bool b = (c == '\b' || ('0' <= c && c <= '9') || c == ',' || c=='.');
-        //    if (!b)
-        //        e.Handled = true;
-        //    if (this.Text.IndexOf(',') > 1 && c == ',')
-        //        e.Handled = true;
-        //    if (this.Text.IndexOf('.') > 1 && c == '.')
-        //        e.Handled = true;
-
-        //}
-        #endregion
-
         private void OmronEditKeyPress(object sender, KeyPressEventArgs e)
         {
+            bool DotChar = e.KeyChar == '.';
+            bool ZeroPosition = SelectionStart == 0;
+
             if (e.KeyChar == ',')
             {
                 e.Handled = true;
-                if (Text.IndexOf('.') < 0 && SelectionStart != 0  )
+                if (Text.IndexOf('.') < 0 && !ZeroPosition )
                 {
                     Text += @".";
                     SelectionStart = Text.Length;
                 }
             }
 
-            
-
-            if ((Text.IndexOf('.') >= 0 ||SelectionStart == 0) &&
-                e.KeyChar == '.' ||
-                (SelectionStart != 0 && e.KeyChar == '-'))
+            if ((Text.IndexOf('.') >= 0 || ZeroPosition) && !DotChar || (!ZeroPosition && e.KeyChar == '-'))
                 e.Handled = true;
 
-            if (Text.IndexOf('0') == 0 &&
-                (e.KeyChar == '0' || e.KeyChar != '.') &&
-                SelectionStart == 1 ||
-                (SelectionStart == 0 && Text == @"0"))
+            if (Text.IndexOf('0') == 0 && (e.KeyChar == '0' || !DotChar) && SelectionStart == 1 ||
+                (ZeroPosition && Text == @"0"))
+            {
                 Text = "";
-
-
+            }
 
         }
 
@@ -152,53 +131,47 @@ namespace OmronProject
             var MaxTextLength = 6;
             var MaxFract = 2;
 
-            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            bool MissRange0_9 = e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9;
+            bool MissRange0_9Numpad = e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9;
+            bool DotPressed = e.KeyCode == Keys.OemPeriod && e.KeyCode == Keys.Decimal && e.KeyCode == Keys.Oemcomma;
+            bool MinusPressed = e.KeyCode == Keys.OemMinus && e.KeyCode == Keys.Subtract;
+            bool BackPressed = e.KeyCode == Keys.Back;
+            bool DotInField = Text.IndexOf('.') >= 0;
+            bool FractIsMax = Text.Substring(Text.IndexOf('.')).Length > MaxFract;
+
+            if (MissRange0_9 && MissRange0_9Numpad && !DotPressed && !MinusPressed && !BackPressed)
             {
-                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
-                {
-                    if (e.KeyCode != Keys.Back && e.KeyCode != Keys.OemPeriod
-                        && e.KeyCode != Keys.Oemcomma && e.KeyCode != Keys.OemMinus
-                        && e.KeyCode != Keys.Decimal && e.KeyCode != Keys.Subtract)
-                        e.SuppressKeyPress = true;
-                }
+                e.SuppressKeyPress = true;
             }
 
-            if (Text.IndexOf('.') >= 0 )
-                    if (Text.Substring(Text.IndexOf('.')).Length > MaxFract && e.KeyCode != Keys.Back)
-                        e.SuppressKeyPress = true;
-
-            if (Text.Length > MaxTextLength && e.KeyCode != Keys.Back || e.KeyCode == Keys.Home ||
-                e.KeyCode == Keys.End || e.KeyCode ==Keys.Tab)
+            if (DotInField && FractIsMax && !BackPressed)
+            {
                 e.SuppressKeyPress = true;
+            }
 
-            if (e.KeyCode == Keys.Oemcomma || e.KeyCode == Keys.Decimal && Text == @"0")
+            if (Text.Length > MaxTextLength && !BackPressed || e.KeyCode == Keys.Home ||
+                e.KeyCode == Keys.End || e.KeyCode == Keys.Tab)
+            {
+                e.SuppressKeyPress = true;
+            }
+
+            if (DotPressed && Text.IndexOf('-') == 0 && SelectionStart == 1)
+            {
+                e.SuppressKeyPress = true;
+            }
+
+            if (DotPressed && Text == @"0")
             {
                 Text = @"0.";
                 SelectionStart = TextLength;
             }
-
-            if (e.KeyCode == Keys.Decimal && Text.IndexOf('-') == 0 && SelectionStart == 1)
-            {
-                //MessageBox.Show(Text.IndexOf('-').ToString());
-                e.SuppressKeyPress = true;
-                
-                
-              //  BackColor = Color.Yellow;
-                //Thread.Sleep(700);
-                //BackColor = Color.Red;
-                //Thread.Sleep(700);
-                //BackColor = Color.Yellow;
-
-            }
             
         }
 
-       
 
         private void OmronEditKeyDown(object sender, KeyEventArgs e)
         {
            CheckInput(e);
-
 
             switch (e.KeyCode)
             {
@@ -228,13 +201,13 @@ namespace OmronProject
             {
                 case ContentType.NumInt:
 
-                    var i = int.Parse(Text);
+                    int i = int.Parse(Text);
                     if (op == Operation.Increment && i < MaxError) i+=(int)Step;
                     if (op == Operation.Decrement && i > MinError) i -=(int)Step;
                     Text = i.ToString();
                     break;
                 case ContentType.NumFloat:
-                    var f = float.Parse(Text);
+                    float f = float.Parse(Text);
                     if (op == Operation.Increment && f<MaxError) f+=Step;
                     if (op == Operation.Decrement && f> MinError) f-=Step;
                     Text = f.ToString();
