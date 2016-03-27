@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace OmronProject
@@ -8,38 +9,38 @@ namespace OmronProject
     public partial class MainWindow : Form
     {
         private readonly KeyboardHook _hook = new KeyboardHook();
+
         public MainWindow()
         {
             InitializeComponent();
             HighlightHeater(1);
 
             _hook.KeyPressed += HookKeyPressed;
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F1);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F2);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F3);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F4);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F5);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F6);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F8);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.F9);
+            List<Keys> KeyList = new List<Keys>()
+            {
+                Keys.F1, Keys.F2,Keys.F3,Keys.F4,Keys.F5,Keys.Tab
 
-            /*_hook.RegisterHotKey(new ModifierKeys(), Keys.Up);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.Down);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.Left);
-            _hook.RegisterHotKey(new ModifierKeys(), Keys.Right);*/
+            };
+            
+            foreach (var key in KeyList)
+                _hook.RegisterHotKey(new ModifierKeys(),key);
+            
+           
+
+          
         }
 
-        private IEnumerable<Control> GetAll(Control control, Type type)
+        private IEnumerable<Control> GetAllControls(Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();
-            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+            return controls.SelectMany(ctrl => GetAllControls(ctrl, type))
                 .Concat(controls).Where(c => c.GetType() == type);
         }
 
 
         private void HighlightHeater(int nHeater)
         {
-            foreach (var heater in GetAll(this,typeof(OPanel)) )
+            foreach (var heater in GetAllControls(this,typeof(OPanel)) )
             {
                // if (heater.GetType() != typeof (OmronPanel)) continue;
                 var pn = heater as OPanel;
@@ -48,6 +49,7 @@ namespace OmronProject
                 else
                 {
                     pn.SetPassiveColorPanel();
+                    
                 }
             }
         }
@@ -78,9 +80,11 @@ namespace OmronProject
                     HighlightHeater(9);
                     break;
 
-                case Keys.Escape:
-                    Application.Exit();
+                case Keys.Tab:
+                   // return;
                     break;
+
+
                     /*      case Keys.Up:
                     if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
                     {

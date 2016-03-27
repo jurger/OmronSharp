@@ -24,18 +24,16 @@ namespace OmronProject
             {
                 if (control is Label)
                     control.ForeColor = Color.Lime;
-                if (control is OEdit)
-                {
-                    control.BackColor = Color.DarkKhaki;
-                    control.Enabled = true;
-                    if (control.Focused)
-                        control.BackColor = Color.Yellow;
-
-                }
-                
+                if (!(control is OEdit)) continue;
+                control.BackColor = Color.DarkKhaki;
+                control.Enabled = true;
+                if (control.Focused)
+                    control.BackColor = Color.Yellow;
             }
-        //    IsActive = true;
+       
             FocusPriority.Focus();
+
+            //    IsActive = true;
         }
 
         public void SetPassiveColorPanel()
