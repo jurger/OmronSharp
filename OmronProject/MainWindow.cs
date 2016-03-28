@@ -9,6 +9,7 @@ namespace OmronProject
     public partial class MainWindow : Form
     {
         private readonly KeyboardHook _hook = new KeyboardHook();
+        List<Keys> KeyList;
 
         public MainWindow()
         {
@@ -16,18 +17,17 @@ namespace OmronProject
             HighlightHeater(1);
 
             _hook.KeyPressed += HookKeyPressed;
-            List<Keys> KeyList = new List<Keys>()
+            KeyList = new List<Keys>()
             {
-                Keys.F1, Keys.F2,Keys.F3,Keys.F4,Keys.F5,Keys.Tab
-
+                Keys.F1, Keys.F2,Keys.F3,Keys.F4,Keys.F5
             };
-            
-            foreach (var key in KeyList)
-                _hook.RegisterHotKey(new ModifierKeys(),key);
-            
-           
 
-          
+            foreach (var key in KeyList)
+            {
+                _hook.RegisterHotKey(new ModifierKeys(), key);
+            }
+
+            _hook.RegisterHotKey(new ModifierKeys(), Keys.Tab);
         }
 
         private IEnumerable<Control> GetAllControls(Control control, Type type)
@@ -56,51 +56,30 @@ namespace OmronProject
 
     private void HookKeyPressed(object sender, KeyPressedEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Keys.F1:
-                    HighlightHeater(1);
-                    break;
-                case Keys.F2:
-                    HighlightHeater(2);
-                    break;
-                case Keys.F3:
-                    HighlightHeater(3);
-                    break;
-                case Keys.F4:
-                    HighlightHeater(4);
-                    break;
-                case Keys.F5:
-                    HighlightHeater(5);
-                    break;
-                case Keys.F8:
-                    HighlightHeater(8);
-                    break;
-                case Keys.F9:
-                    HighlightHeater(9);
-                    break;
+            foreach (var key in KeyList)
+                if (e.Key == key)
+                    HighlightHeater(KeyList.IndexOf(key)+1);
 
-                case Keys.Tab:
-                   // return;
-                    break;
+            if (e.Key == Keys.Tab)  return;
+           
 
 
-                    /*      case Keys.Up:
-                    if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
-                    {
-                        var oedit = (OmronEdit.OmronEdit) ActiveControl;
-                        oedit.FieldUp.Focus();
-                    }
-                    break;
-                case Keys.Down:
-                    if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
-                    {
-                        var oedit = (OmronEdit.OmronEdit)ActiveControl;
-                        oedit.FieldDown.Focus();
-                    }
-                    break;
-           */
-            }
+           //         /*      case Keys.Up:
+           //         if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
+           //         {
+           //             var oedit = (OmronEdit.OmronEdit) ActiveControl;
+           //             oedit.FieldUp.Focus();
+           //         }
+           //         break;
+           //     case Keys.Down:
+           //         if (ActiveControl.GetType() == typeof(OmronEdit.OmronEdit))
+           //         {
+           //             var oedit = (OmronEdit.OmronEdit)ActiveControl;
+           //             oedit.FieldDown.Focus();
+           //         }
+           //         break;
+           //*/
+           // }
         }
 
 

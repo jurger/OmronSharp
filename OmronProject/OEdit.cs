@@ -95,31 +95,31 @@ namespace OmronProject
         {
          //   HideCaret(Handle);
             BackColor = Color.Yellow;
-            SelectionStart = 0;
+            SelectionStart = TextLength;
 
         }
 
 
         private void OmronEditKeyPress(object sender, KeyPressEventArgs e)
         {
-            bool DotChar = e.KeyChar == '.';
-            bool ZeroPosition = SelectionStart == 0;
+            bool isDotChar = e.KeyChar == '.';
 
             if (e.KeyChar == ',')
             {
                 e.Handled = true;
-                if (Text.IndexOf('.') < 0 && !ZeroPosition )
+                if (Text.IndexOf('.') < 0 && SelectionStart != 0 && TypeContent == ContentType.NumFloat)
                 {
                     Text += @".";
                     SelectionStart = Text.Length;
                 }
             }
 
-            if ((Text.IndexOf('.') >= 0 || ZeroPosition) && !DotChar || (!ZeroPosition && e.KeyChar == '-'))
+            if ((Text.IndexOf('.') >= 0 || SelectionStart == 0) && isDotChar || e.KeyChar == '-')
+            {
                 e.Handled = true;
-
-            if (Text.IndexOf('0') == 0 && (e.KeyChar == '0' || !DotChar) && SelectionStart == 1 ||
-                (ZeroPosition && Text == @"0"))
+            }
+            
+            if (Text.IndexOf('0') == 0 && (e.KeyChar == '0' || !isDotChar) && SelectionStart == 1 || (SelectionStart == 0 && Text == @"0"))
             {
                 Text = "";
             }
@@ -133,18 +133,19 @@ namespace OmronProject
 
             bool MissRange0_9 = e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9;
             bool MissRange0_9Numpad = e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9;
-            bool DotPressed = e.KeyCode == Keys.OemPeriod && e.KeyCode == Keys.Decimal && e.KeyCode == Keys.Oemcomma;
-            bool MinusPressed = e.KeyCode == Keys.OemMinus && e.KeyCode == Keys.Subtract;
+            bool DotPressed = e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal || e.KeyCode == Keys.Oemcomma;
+            bool MinusPressed = e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract;
+            bool ZeroPressed = e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0;
             bool BackPressed = e.KeyCode == Keys.Back;
             bool DotInField = Text.IndexOf('.') >= 0;
-            bool FractIsMax = Text.Substring(Text.IndexOf('.')).Length > MaxFract;
+       //     bool FractIsMax = Text.Substring(Text.IndexOf('.')).Length > MaxFract;
 
             if (MissRange0_9 && MissRange0_9Numpad && !DotPressed && !MinusPressed && !BackPressed)
             {
                 e.SuppressKeyPress = true;
             }
 
-            if (DotInField && FractIsMax && !BackPressed)
+            if (DotInField && Text.Substring(Text.IndexOf('.')).Length > MaxFract && !BackPressed)
             {
                 e.SuppressKeyPress = true;
             }
@@ -160,12 +161,40 @@ namespace OmronProject
                 e.SuppressKeyPress = true;
             }
 
-            if (DotPressed && Text == @"0")
+            if (DotPressed && Text == @"0" && TypeContent == ContentType.NumFloat)
             {
                 Text = @"0.";
                 SelectionStart = TextLength;
             }
-            
+
+            if (Text == "-0" && ZeroPressed)
+            {
+                e.SuppressKeyPress = true;
+            }
+
+            if (TypeContent != ContentType.NumFloat && DotPressed)
+            {
+                e.SuppressKeyPress = true;
+            }
+
+            if (MinusPressed)
+            {
+                if (Text.IndexOf('-') < 0 && Text.IndexOf('0') != 0)
+                {
+                    Text = "-" + Text;
+                }
+                else
+
+                 if (Text.IndexOf('0') == 0)
+                    Text = "-";
+                 else
+                {
+                    Text = Text.Substring(1);
+                }
+
+                SelectionStart = TextLength;
+            }
+                
         }
 
 
