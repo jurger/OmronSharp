@@ -42,7 +42,7 @@ namespace OmronProject
         {
             foreach (var heater in GetAllControls(this,typeof(OPanel)) )
             {
-               // if (heater.GetType() != typeof (OmronPanel)) continue;
+                if (heater.GetType() != typeof (OPanel)) continue;
                 var pn = heater as OPanel;
                 if (nHeater == pn.HeaterNumber)
                     pn.SetActiveColorPanel();

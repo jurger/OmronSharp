@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace OmronProject
@@ -60,10 +61,11 @@ namespace OmronProject
         public ContentType TypeContent { get; set; }
         public TActivity Activity { get; set; }
         public TState State { get; set; }
-        public TWindow Window { get; set; }
+        public TWindow WindowAttachment { get; set; }
         public OEdit FieldUp { get; set; }
         public OEdit FieldDown { get; set; }
-
+        public OPanel PanelHeater { get; set; }
+        
 
         [DllImport("user32.dll")]
         private static extern bool HideCaret(IntPtr hWnd);
@@ -82,19 +84,19 @@ namespace OmronProject
 
         public OEdit()
         {
-
+            
             InitializeComponent();
             
             GotFocus += FieldGotFocus;
-            Enabled = true; //TODO: Need fix in designer
+           
             
-
-    }
+        }
 
         private void FieldGotFocus(object sender, EventArgs args)
         {
-         //   HideCaret(Handle);
-            BackColor = Color.Yellow;
+            //   HideCaret(Handle);
+            if (PanelHeater.IsActive)
+               BackColor = Color.Yellow;
             SelectionStart = TextLength;
 
         }
@@ -123,6 +125,7 @@ namespace OmronProject
             {
                 Text = "";
             }
+            BackColor=Color.Red;
 
         }
 
@@ -167,7 +170,7 @@ namespace OmronProject
                 SelectionStart = TextLength;
             }
 
-            if (Text == "-0" && ZeroPressed)
+            if (Text == @"-0" && ZeroPressed)
             {
                 e.SuppressKeyPress = true;
             }
@@ -181,12 +184,12 @@ namespace OmronProject
             {
                 if (Text.IndexOf('-') < 0 && Text.IndexOf('0') != 0)
                 {
-                    Text = "-" + Text;
+                    Text = @"-" + Text;
                 }
                 else
 
                  if (Text.IndexOf('0') == 0)
-                    Text = "-";
+                    Text = @"-";
                  else
                 {
                     Text = Text.Substring(1);
@@ -213,6 +216,10 @@ namespace OmronProject
                 case Keys.Escape:
                     Text = @"0";
                     SelectionStart = 0;
+                    BackColor = Color.Yellow;
+                    break;
+                case Keys.Enter:
+                    BackColor = Color.LightGreen;;
                     break;
                 case Keys.Right:
                     ChangeValue(TypeContent, Operation.Increment);
@@ -236,7 +243,9 @@ namespace OmronProject
                     Text = i.ToString();
                     break;
                 case ContentType.NumFloat:
-                    float f = float.Parse(Text);
+                    if (Text.Contains("."))
+                      Text=Text.Replace('.', ',');
+                    float f = float.Parse(Text);//TODO Format Exception
                     if (op == Operation.Increment && f<MaxError) f+=Step;
                     if (op == Operation.Decrement && f> MinError) f-=Step;
                     Text = f.ToString();
@@ -258,7 +267,8 @@ namespace OmronProject
 
         private void OmronEditLeave(object sender, EventArgs e)
         {
-            BackColor = Color.DarkKhaki;
+            if (PanelHeater.IsActive)
+                BackColor = Color.DarkKhaki;
             if (Text == "" || Text == @"-")
                 Text = @"0";
 

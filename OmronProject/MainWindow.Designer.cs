@@ -141,6 +141,7 @@
             this.TProgramBok = new OmronProject.OEdit();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.TStopBok = new OmronProject.OEdit();
             this.TErrorBok = new OmronProject.OEdit();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -148,7 +149,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.TStopBok = new OmronProject.OEdit();
             this.panel1 = new OmronProject.OPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -459,13 +459,14 @@
             this.omronEdit29.MinError = 0;
             this.omronEdit29.Name = "omronEdit29";
             this.omronEdit29.NumsAfterDot = 0;
+            this.omronEdit29.PanelHeater = null;
             this.omronEdit29.Size = new System.Drawing.Size(105, 23);
             this.omronEdit29.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit29.Step = 0F;
             this.omronEdit29.TabIndex = 20;
             this.omronEdit29.Text = "0";
             this.omronEdit29.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit29.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit29.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label67
             // 
@@ -498,13 +499,14 @@
             this.omronEdit30.MinError = 0;
             this.omronEdit30.Name = "omronEdit30";
             this.omronEdit30.NumsAfterDot = 0;
+            this.omronEdit30.PanelHeater = null;
             this.omronEdit30.Size = new System.Drawing.Size(105, 23);
             this.omronEdit30.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit30.Step = 0F;
             this.omronEdit30.TabIndex = 17;
             this.omronEdit30.Text = "0";
             this.omronEdit30.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit30.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit30.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label69
             // 
@@ -537,13 +539,14 @@
             this.omronEdit31.MinError = 0;
             this.omronEdit31.Name = "omronEdit31";
             this.omronEdit31.NumsAfterDot = 0;
+            this.omronEdit31.PanelHeater = null;
             this.omronEdit31.Size = new System.Drawing.Size(105, 23);
             this.omronEdit31.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit31.Step = 0F;
             this.omronEdit31.TabIndex = 14;
             this.omronEdit31.Text = "0";
             this.omronEdit31.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit31.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit31.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label71
             // 
@@ -586,13 +589,14 @@
             this.omronEdit32.MinError = 0;
             this.omronEdit32.Name = "omronEdit32";
             this.omronEdit32.NumsAfterDot = 0;
+            this.omronEdit32.PanelHeater = null;
             this.omronEdit32.Size = new System.Drawing.Size(105, 23);
             this.omronEdit32.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit32.Step = 0F;
             this.omronEdit32.TabIndex = 10;
             this.omronEdit32.Text = "0";
             this.omronEdit32.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit32.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit32.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label74
             // 
@@ -625,13 +629,14 @@
             this.omronEdit33.MinError = 0;
             this.omronEdit33.Name = "omronEdit33";
             this.omronEdit33.NumsAfterDot = 0;
+            this.omronEdit33.PanelHeater = null;
             this.omronEdit33.Size = new System.Drawing.Size(105, 23);
             this.omronEdit33.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit33.Step = 0F;
             this.omronEdit33.TabIndex = 7;
             this.omronEdit33.Text = "0";
             this.omronEdit33.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit33.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit33.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label76
             // 
@@ -664,13 +669,14 @@
             this.omronEdit34.MinError = 0;
             this.omronEdit34.Name = "omronEdit34";
             this.omronEdit34.NumsAfterDot = 0;
+            this.omronEdit34.PanelHeater = null;
             this.omronEdit34.Size = new System.Drawing.Size(105, 23);
             this.omronEdit34.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit34.Step = 0F;
             this.omronEdit34.TabIndex = 4;
             this.omronEdit34.Text = "0";
             this.omronEdit34.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit34.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit34.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label78
             // 
@@ -713,13 +719,14 @@
             this.omronEdit35.MinError = 0;
             this.omronEdit35.Name = "omronEdit35";
             this.omronEdit35.NumsAfterDot = 0;
+            this.omronEdit35.PanelHeater = null;
             this.omronEdit35.Size = new System.Drawing.Size(105, 23);
             this.omronEdit35.State = OmronProject.OEdit.TState.Normal;
             this.omronEdit35.Step = 0F;
             this.omronEdit35.TabIndex = 0;
             this.omronEdit35.Text = "0";
             this.omronEdit35.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.omronEdit35.Window = OmronProject.OEdit.TWindow.Dno;
+            this.omronEdit35.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // panel4
             // 
@@ -785,13 +792,14 @@
             this.PModeAlg.MinError = 0;
             this.PModeAlg.Name = "PModeAlg";
             this.PModeAlg.NumsAfterDot = 0;
+            this.PModeAlg.PanelHeater = null;
             this.PModeAlg.Size = new System.Drawing.Size(105, 23);
             this.PModeAlg.State = OmronProject.OEdit.TState.Normal;
             this.PModeAlg.Step = 0F;
             this.PModeAlg.TabIndex = 20;
             this.PModeAlg.Text = "0";
             this.PModeAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PModeAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.PModeAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label51
             // 
@@ -824,13 +832,14 @@
             this.PCurrAlg.MinError = 0;
             this.PCurrAlg.Name = "PCurrAlg";
             this.PCurrAlg.NumsAfterDot = 0;
+            this.PCurrAlg.PanelHeater = null;
             this.PCurrAlg.Size = new System.Drawing.Size(105, 23);
             this.PCurrAlg.State = OmronProject.OEdit.TState.Normal;
             this.PCurrAlg.Step = 0F;
             this.PCurrAlg.TabIndex = 17;
             this.PCurrAlg.Text = "0";
             this.PCurrAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PCurrAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.PCurrAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label53
             // 
@@ -863,13 +872,14 @@
             this.PMaxAlg.MinError = 0;
             this.PMaxAlg.Name = "PMaxAlg";
             this.PMaxAlg.NumsAfterDot = 0;
+            this.PMaxAlg.PanelHeater = null;
             this.PMaxAlg.Size = new System.Drawing.Size(105, 23);
             this.PMaxAlg.State = OmronProject.OEdit.TState.Normal;
             this.PMaxAlg.Step = 0F;
             this.PMaxAlg.TabIndex = 14;
             this.PMaxAlg.Text = "0";
             this.PMaxAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PMaxAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.PMaxAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label55
             // 
@@ -912,13 +922,14 @@
             this.TProgramAlg.MinError = 0;
             this.TProgramAlg.Name = "TProgramAlg";
             this.TProgramAlg.NumsAfterDot = 0;
+            this.TProgramAlg.PanelHeater = null;
             this.TProgramAlg.Size = new System.Drawing.Size(105, 23);
             this.TProgramAlg.State = OmronProject.OEdit.TState.Normal;
             this.TProgramAlg.Step = 0F;
             this.TProgramAlg.TabIndex = 10;
             this.TProgramAlg.Text = "0";
             this.TProgramAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TProgramAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.TProgramAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label58
             // 
@@ -951,13 +962,14 @@
             this.TErrorAlg.MinError = 0;
             this.TErrorAlg.Name = "TErrorAlg";
             this.TErrorAlg.NumsAfterDot = 0;
+            this.TErrorAlg.PanelHeater = null;
             this.TErrorAlg.Size = new System.Drawing.Size(105, 23);
             this.TErrorAlg.State = OmronProject.OEdit.TState.Normal;
             this.TErrorAlg.Step = 0F;
             this.TErrorAlg.TabIndex = 7;
             this.TErrorAlg.Text = "0";
             this.TErrorAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TErrorAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.TErrorAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label60
             // 
@@ -990,13 +1002,14 @@
             this.TTaskAlg.MinError = 0;
             this.TTaskAlg.Name = "TTaskAlg";
             this.TTaskAlg.NumsAfterDot = 0;
+            this.TTaskAlg.PanelHeater = null;
             this.TTaskAlg.Size = new System.Drawing.Size(105, 23);
             this.TTaskAlg.State = OmronProject.OEdit.TState.Normal;
             this.TTaskAlg.Step = 0F;
             this.TTaskAlg.TabIndex = 4;
             this.TTaskAlg.Text = "0";
             this.TTaskAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TTaskAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.TTaskAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // label62
             // 
@@ -1039,13 +1052,14 @@
             this.TStopAlg.MinError = 0;
             this.TStopAlg.Name = "TStopAlg";
             this.TStopAlg.NumsAfterDot = 0;
+            this.TStopAlg.PanelHeater = null;
             this.TStopAlg.Size = new System.Drawing.Size(105, 23);
             this.TStopAlg.State = OmronProject.OEdit.TState.Normal;
             this.TStopAlg.Step = 0F;
             this.TStopAlg.TabIndex = 0;
             this.TStopAlg.Text = "0";
             this.TStopAlg.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TStopAlg.Window = OmronProject.OEdit.TWindow.Algorithm;
+            this.TStopAlg.WindowAttachment = OmronProject.OEdit.TWindow.Algorithm;
             // 
             // panel3
             // 
@@ -1111,13 +1125,14 @@
             this.PModePit.MinError = 0;
             this.PModePit.Name = "PModePit";
             this.PModePit.NumsAfterDot = 0;
+            this.PModePit.PanelHeater = this.panel3;
             this.PModePit.Size = new System.Drawing.Size(105, 23);
             this.PModePit.State = OmronProject.OEdit.TState.Normal;
             this.PModePit.Step = 0F;
             this.PModePit.TabIndex = 20;
             this.PModePit.Text = "0";
             this.PModePit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PModePit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.PModePit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label35
             // 
@@ -1150,13 +1165,14 @@
             this.PCurrPit.MinError = 0;
             this.PCurrPit.Name = "PCurrPit";
             this.PCurrPit.NumsAfterDot = 0;
+            this.PCurrPit.PanelHeater = this.panel3;
             this.PCurrPit.Size = new System.Drawing.Size(105, 23);
             this.PCurrPit.State = OmronProject.OEdit.TState.Normal;
             this.PCurrPit.Step = 0F;
             this.PCurrPit.TabIndex = 17;
             this.PCurrPit.Text = "0";
             this.PCurrPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PCurrPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.PCurrPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label37
             // 
@@ -1189,13 +1205,14 @@
             this.PMaxPit.MinError = 0;
             this.PMaxPit.Name = "PMaxPit";
             this.PMaxPit.NumsAfterDot = 0;
+            this.PMaxPit.PanelHeater = this.panel3;
             this.PMaxPit.Size = new System.Drawing.Size(105, 23);
             this.PMaxPit.State = OmronProject.OEdit.TState.Normal;
             this.PMaxPit.Step = 0F;
             this.PMaxPit.TabIndex = 14;
             this.PMaxPit.Text = "0";
             this.PMaxPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PMaxPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.PMaxPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label39
             // 
@@ -1238,13 +1255,14 @@
             this.TProgramPit.MinError = 0;
             this.TProgramPit.Name = "TProgramPit";
             this.TProgramPit.NumsAfterDot = 0;
+            this.TProgramPit.PanelHeater = this.panel3;
             this.TProgramPit.Size = new System.Drawing.Size(105, 23);
             this.TProgramPit.State = OmronProject.OEdit.TState.Normal;
             this.TProgramPit.Step = 0F;
             this.TProgramPit.TabIndex = 10;
             this.TProgramPit.Text = "0";
             this.TProgramPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TProgramPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.TProgramPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label42
             // 
@@ -1277,13 +1295,14 @@
             this.TErrorPit.MinError = 0;
             this.TErrorPit.Name = "TErrorPit";
             this.TErrorPit.NumsAfterDot = 0;
+            this.TErrorPit.PanelHeater = this.panel3;
             this.TErrorPit.Size = new System.Drawing.Size(105, 23);
             this.TErrorPit.State = OmronProject.OEdit.TState.Normal;
             this.TErrorPit.Step = 0F;
             this.TErrorPit.TabIndex = 7;
             this.TErrorPit.Text = "0";
             this.TErrorPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TErrorPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.TErrorPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label44
             // 
@@ -1316,13 +1335,14 @@
             this.TTaskPit.MinError = 0;
             this.TTaskPit.Name = "TTaskPit";
             this.TTaskPit.NumsAfterDot = 0;
+            this.TTaskPit.PanelHeater = this.panel3;
             this.TTaskPit.Size = new System.Drawing.Size(105, 23);
             this.TTaskPit.State = OmronProject.OEdit.TState.Normal;
             this.TTaskPit.Step = 0F;
             this.TTaskPit.TabIndex = 4;
             this.TTaskPit.Text = "0";
             this.TTaskPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TTaskPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.TTaskPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // label46
             // 
@@ -1365,13 +1385,14 @@
             this.TStopPit.MinError = 0;
             this.TStopPit.Name = "TStopPit";
             this.TStopPit.NumsAfterDot = 0;
+            this.TStopPit.PanelHeater = this.panel3;
             this.TStopPit.Size = new System.Drawing.Size(105, 23);
             this.TStopPit.State = OmronProject.OEdit.TState.Normal;
             this.TStopPit.Step = 0F;
             this.TStopPit.TabIndex = 0;
             this.TStopPit.Text = "0";
             this.TStopPit.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TStopPit.Window = OmronProject.OEdit.TWindow.Pit;
+            this.TStopPit.WindowAttachment = OmronProject.OEdit.TWindow.Pit;
             // 
             // panel2
             // 
@@ -1391,6 +1412,7 @@
             this.panel2.Controls.Add(this.TProgramBok);
             this.panel2.Controls.Add(this.label26);
             this.panel2.Controls.Add(this.label27);
+            this.panel2.Controls.Add(this.TStopBok);
             this.panel2.Controls.Add(this.TErrorBok);
             this.panel2.Controls.Add(this.label28);
             this.panel2.Controls.Add(this.label29);
@@ -1398,7 +1420,6 @@
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label32);
-            this.panel2.Controls.Add(this.TStopBok);
             this.panel2.FocusPriority = this.TTaskBok;
             this.panel2.HeaterNumber = 2;
             this.panel2.Location = new System.Drawing.Point(248, 25);
@@ -1427,7 +1448,6 @@
             // PModeBok
             // 
             this.PModeBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PModeBok.Enabled = false;
             this.PModeBok.FieldDown = null;
             this.PModeBok.FieldUp = null;
             this.PModeBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1437,13 +1457,14 @@
             this.PModeBok.MinError = 0;
             this.PModeBok.Name = "PModeBok";
             this.PModeBok.NumsAfterDot = 0;
+            this.PModeBok.PanelHeater = this.panel2;
             this.PModeBok.Size = new System.Drawing.Size(105, 23);
             this.PModeBok.State = OmronProject.OEdit.TState.Normal;
             this.PModeBok.Step = 0F;
             this.PModeBok.TabIndex = 20;
             this.PModeBok.Text = "0";
             this.PModeBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PModeBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.PModeBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label19
             // 
@@ -1466,7 +1487,6 @@
             // PCurrBok
             // 
             this.PCurrBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PCurrBok.Enabled = false;
             this.PCurrBok.FieldDown = null;
             this.PCurrBok.FieldUp = null;
             this.PCurrBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1476,13 +1496,14 @@
             this.PCurrBok.MinError = 0;
             this.PCurrBok.Name = "PCurrBok";
             this.PCurrBok.NumsAfterDot = 0;
+            this.PCurrBok.PanelHeater = this.panel2;
             this.PCurrBok.Size = new System.Drawing.Size(105, 23);
             this.PCurrBok.State = OmronProject.OEdit.TState.Normal;
             this.PCurrBok.Step = 0F;
             this.PCurrBok.TabIndex = 17;
             this.PCurrBok.Text = "0";
             this.PCurrBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PCurrBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.PCurrBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label21
             // 
@@ -1505,7 +1526,6 @@
             // PMaxBok
             // 
             this.PMaxBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PMaxBok.Enabled = false;
             this.PMaxBok.FieldDown = null;
             this.PMaxBok.FieldUp = null;
             this.PMaxBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1515,13 +1535,14 @@
             this.PMaxBok.MinError = 0;
             this.PMaxBok.Name = "PMaxBok";
             this.PMaxBok.NumsAfterDot = 0;
+            this.PMaxBok.PanelHeater = this.panel2;
             this.PMaxBok.Size = new System.Drawing.Size(105, 23);
             this.PMaxBok.State = OmronProject.OEdit.TState.Normal;
             this.PMaxBok.Step = 0F;
             this.PMaxBok.TabIndex = 14;
             this.PMaxBok.Text = "0";
             this.PMaxBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PMaxBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.PMaxBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label23
             // 
@@ -1554,7 +1575,6 @@
             // TProgramBok
             // 
             this.TProgramBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TProgramBok.Enabled = false;
             this.TProgramBok.FieldDown = null;
             this.TProgramBok.FieldUp = null;
             this.TProgramBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1564,13 +1584,14 @@
             this.TProgramBok.MinError = 0;
             this.TProgramBok.Name = "TProgramBok";
             this.TProgramBok.NumsAfterDot = 0;
+            this.TProgramBok.PanelHeater = this.panel2;
             this.TProgramBok.Size = new System.Drawing.Size(105, 23);
             this.TProgramBok.State = OmronProject.OEdit.TState.Normal;
             this.TProgramBok.Step = 0F;
             this.TProgramBok.TabIndex = 10;
             this.TProgramBok.Text = "0";
             this.TProgramBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TProgramBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.TProgramBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label26
             // 
@@ -1590,10 +1611,30 @@
             this.label27.TabIndex = 8;
             this.label27.Text = "Ошибка";
             // 
+            // TStopBok
+            // 
+            this.TStopBok.Activity = OmronProject.OEdit.TActivity.PasInPas;
+            this.TStopBok.FieldDown = null;
+            this.TStopBok.FieldUp = null;
+            this.TStopBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TStopBok.Location = new System.Drawing.Point(67, 25);
+            this.TStopBok.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.TStopBok.MaxError = 0;
+            this.TStopBok.MinError = 0;
+            this.TStopBok.Name = "TStopBok";
+            this.TStopBok.NumsAfterDot = 0;
+            this.TStopBok.PanelHeater = this.panel2;
+            this.TStopBok.Size = new System.Drawing.Size(105, 23);
+            this.TStopBok.State = OmronProject.OEdit.TState.Normal;
+            this.TStopBok.Step = 0F;
+            this.TStopBok.TabIndex = 1;
+            this.TStopBok.Text = "0";
+            this.TStopBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
+            this.TStopBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
+            // 
             // TErrorBok
             // 
             this.TErrorBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TErrorBok.Enabled = false;
             this.TErrorBok.FieldDown = null;
             this.TErrorBok.FieldUp = null;
             this.TErrorBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1603,13 +1644,14 @@
             this.TErrorBok.MinError = 0;
             this.TErrorBok.Name = "TErrorBok";
             this.TErrorBok.NumsAfterDot = 0;
+            this.TErrorBok.PanelHeater = this.panel2;
             this.TErrorBok.Size = new System.Drawing.Size(105, 23);
             this.TErrorBok.State = OmronProject.OEdit.TState.Normal;
             this.TErrorBok.Step = 0F;
             this.TErrorBok.TabIndex = 7;
             this.TErrorBok.Text = "0";
             this.TErrorBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TErrorBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.TErrorBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label28
             // 
@@ -1632,7 +1674,6 @@
             // TTaskBok
             // 
             this.TTaskBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TTaskBok.Enabled = false;
             this.TTaskBok.FieldDown = null;
             this.TTaskBok.FieldUp = null;
             this.TTaskBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1642,13 +1683,14 @@
             this.TTaskBok.MinError = 0;
             this.TTaskBok.Name = "TTaskBok";
             this.TTaskBok.NumsAfterDot = 0;
+            this.TTaskBok.PanelHeater = this.panel2;
             this.TTaskBok.Size = new System.Drawing.Size(105, 23);
             this.TTaskBok.State = OmronProject.OEdit.TState.Normal;
             this.TTaskBok.Step = 0F;
             this.TTaskBok.TabIndex = 4;
             this.TTaskBok.Text = "0";
             this.TTaskBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TTaskBok.Window = OmronProject.OEdit.TWindow.Bok;
+            this.TTaskBok.WindowAttachment = OmronProject.OEdit.TWindow.Bok;
             // 
             // label30
             // 
@@ -1677,26 +1719,6 @@
             this.label32.Size = new System.Drawing.Size(50, 13);
             this.label32.TabIndex = 1;
             this.label32.Text = "Останов";
-            // 
-            // TStopBok
-            // 
-            this.TStopBok.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TStopBok.FieldDown = null;
-            this.TStopBok.FieldUp = null;
-            this.TStopBok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TStopBok.Location = new System.Drawing.Point(67, 25);
-            this.TStopBok.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.TStopBok.MaxError = 0;
-            this.TStopBok.MinError = 0;
-            this.TStopBok.Name = "TStopBok";
-            this.TStopBok.NumsAfterDot = 0;
-            this.TStopBok.Size = new System.Drawing.Size(105, 23);
-            this.TStopBok.State = OmronProject.OEdit.TState.Normal;
-            this.TStopBok.Step = 0F;
-            this.TStopBok.TabIndex = 0;
-            this.TStopBok.Text = "0";
-            this.TStopBok.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TStopBok.Window = OmronProject.OEdit.TWindow.Bok;
             // 
             // panel1
             // 
@@ -1754,7 +1776,6 @@
             // PModeDno
             // 
             this.PModeDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PModeDno.Enabled = false;
             this.PModeDno.FieldDown = this.TStopDno;
             this.PModeDno.FieldUp = this.PMaxDno;
             this.PModeDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1764,18 +1785,18 @@
             this.PModeDno.MinError = 0;
             this.PModeDno.Name = "PModeDno";
             this.PModeDno.NumsAfterDot = 0;
+            this.PModeDno.PanelHeater = this.panel1;
             this.PModeDno.Size = new System.Drawing.Size(73, 23);
             this.PModeDno.State = OmronProject.OEdit.TState.Normal;
             this.PModeDno.Step = 0F;
             this.PModeDno.TabIndex = 20;
             this.PModeDno.Text = "Автомат";
             this.PModeDno.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PModeDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.PModeDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // TStopDno
             // 
             this.TStopDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TStopDno.Enabled = false;
             this.TStopDno.FieldDown = this.TTaskDno;
             this.TStopDno.FieldUp = this.PModeDno;
             this.TStopDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1785,18 +1806,18 @@
             this.TStopDno.MinError = 0;
             this.TStopDno.Name = "TStopDno";
             this.TStopDno.NumsAfterDot = 0;
+            this.TStopDno.PanelHeater = this.panel1;
             this.TStopDno.Size = new System.Drawing.Size(73, 23);
             this.TStopDno.State = OmronProject.OEdit.TState.Normal;
             this.TStopDno.Step = 0.5F;
             this.TStopDno.TabIndex = 0;
             this.TStopDno.Text = "0";
             this.TStopDno.TypeContent = OmronProject.OEdit.ContentType.NumFloat;
-            this.TStopDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.TStopDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // TTaskDno
             // 
             this.TTaskDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TTaskDno.Enabled = false;
             this.TTaskDno.FieldDown = this.TProgramDno;
             this.TTaskDno.FieldUp = this.TStopDno;
             this.TTaskDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1806,18 +1827,18 @@
             this.TTaskDno.MinError = 0;
             this.TTaskDno.Name = "TTaskDno";
             this.TTaskDno.NumsAfterDot = 0;
+            this.TTaskDno.PanelHeater = this.panel1;
             this.TTaskDno.Size = new System.Drawing.Size(73, 23);
             this.TTaskDno.State = OmronProject.OEdit.TState.Normal;
             this.TTaskDno.Step = 1F;
-            this.TTaskDno.TabIndex = 4;
+            this.TTaskDno.TabIndex = 0;
             this.TTaskDno.Text = "0";
             this.TTaskDno.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TTaskDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.TTaskDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // TProgramDno
             // 
             this.TProgramDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TProgramDno.Enabled = false;
             this.TProgramDno.FieldDown = this.PMaxDno;
             this.TProgramDno.FieldUp = this.TTaskDno;
             this.TProgramDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1827,18 +1848,18 @@
             this.TProgramDno.MinError = 0;
             this.TProgramDno.Name = "TProgramDno";
             this.TProgramDno.NumsAfterDot = 0;
+            this.TProgramDno.PanelHeater = this.panel1;
             this.TProgramDno.Size = new System.Drawing.Size(73, 23);
             this.TProgramDno.State = OmronProject.OEdit.TState.Normal;
             this.TProgramDno.Step = 1F;
             this.TProgramDno.TabIndex = 10;
             this.TProgramDno.Text = "0";
             this.TProgramDno.TypeContent = OmronProject.OEdit.ContentType.NumFloat;
-            this.TProgramDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.TProgramDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // PMaxDno
             // 
             this.PMaxDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PMaxDno.Enabled = false;
             this.PMaxDno.FieldDown = this.PModeDno;
             this.PMaxDno.FieldUp = this.TProgramDno;
             this.PMaxDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1848,13 +1869,14 @@
             this.PMaxDno.MinError = 0;
             this.PMaxDno.Name = "PMaxDno";
             this.PMaxDno.NumsAfterDot = 0;
+            this.PMaxDno.PanelHeater = this.panel1;
             this.PMaxDno.Size = new System.Drawing.Size(73, 23);
             this.PMaxDno.State = OmronProject.OEdit.TState.Normal;
             this.PMaxDno.Step = 1F;
             this.PMaxDno.TabIndex = 14;
             this.PMaxDno.Text = "0";
             this.PMaxDno.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PMaxDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.PMaxDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label13
             // 
@@ -1879,7 +1901,6 @@
             // PCurrDno
             // 
             this.PCurrDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.PCurrDno.Enabled = false;
             this.PCurrDno.FieldDown = this.PModeDno;
             this.PCurrDno.FieldUp = this.PMaxDno;
             this.PCurrDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1889,13 +1910,14 @@
             this.PCurrDno.MinError = 0;
             this.PCurrDno.Name = "PCurrDno";
             this.PCurrDno.NumsAfterDot = 0;
+            this.PCurrDno.PanelHeater = this.panel1;
             this.PCurrDno.Size = new System.Drawing.Size(73, 23);
             this.PCurrDno.State = OmronProject.OEdit.TState.Normal;
             this.PCurrDno.Step = 1F;
             this.PCurrDno.TabIndex = 17;
             this.PCurrDno.Text = "0";
             this.PCurrDno.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.PCurrDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.PCurrDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label11
             // 
@@ -1970,7 +1992,6 @@
             // TErrorDno
             // 
             this.TErrorDno.Activity = OmronProject.OEdit.TActivity.ActInAct;
-            this.TErrorDno.Enabled = false;
             this.TErrorDno.FieldDown = this.TProgramDno;
             this.TErrorDno.FieldUp = this.TTaskDno;
             this.TErrorDno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1980,13 +2001,14 @@
             this.TErrorDno.MinError = 0;
             this.TErrorDno.Name = "TErrorDno";
             this.TErrorDno.NumsAfterDot = 0;
+            this.TErrorDno.PanelHeater = this.panel1;
             this.TErrorDno.Size = new System.Drawing.Size(73, 23);
             this.TErrorDno.State = OmronProject.OEdit.TState.Normal;
             this.TErrorDno.Step = 1F;
             this.TErrorDno.TabIndex = 7;
             this.TErrorDno.Text = "0";
             this.TErrorDno.TypeContent = OmronProject.OEdit.ContentType.NumInt;
-            this.TErrorDno.Window = OmronProject.OEdit.TWindow.Dno;
+            this.TErrorDno.WindowAttachment = OmronProject.OEdit.TWindow.Dno;
             // 
             // label4
             // 

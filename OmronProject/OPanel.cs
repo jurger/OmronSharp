@@ -6,7 +6,7 @@ namespace OmronProject
     public partial class OPanel : Panel
     {
         public int HeaterNumber { get; set; }
-        //public bool IsActive { private set; get; }
+        public bool IsActive { private set; get; }
         public OEdit FocusPriority { get; set; }
 
         public OPanel()
@@ -18,7 +18,8 @@ namespace OmronProject
 
         public void SetActiveColorPanel()
         {
-           
+            IsActive = true;
+
             BackColor = Color.Gray;
             foreach (Control control in Controls)
             {
@@ -29,11 +30,15 @@ namespace OmronProject
                 control.Enabled = true;
                 if (control.Focused)
                     control.BackColor = Color.Yellow;
+               
             }
        
             FocusPriority.Focus();
 
-            //    IsActive = true;
+           
+
+            
+
         }
 
         public void SetPassiveColorPanel()
@@ -44,11 +49,14 @@ namespace OmronProject
                 if (control is Label)
                     control.ForeColor = Color.Black;
                 var edit = control as OEdit;
-                if (edit == null) continue;
-                control.BackColor = Color.White;
-          //      edit.ReadOnly = true;
+                if (edit == null)
+                    continue;
+                edit.BackColor = Color.White;
+                //edit.Focused = false;
+                //      edit.ReadOnly = true;
             }
-  //          IsActive = false;
+            
+            IsActive = false;
         }
 
 
