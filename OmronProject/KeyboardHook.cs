@@ -7,12 +7,13 @@ public sealed class KeyboardHook : IDisposable
 {
     // Registers a hot key with Windows.
     private readonly Window _window = new Window();
+
     private int _currentId;
 
     public KeyboardHook()
     {
         // register the event of the inner native window.
-        _window.KeyPressed += delegate(object sender, KeyPressedEventArgs args)
+        _window.KeyPressed += delegate (object sender, KeyPressedEventArgs args)
         {
             KeyPressed?.Invoke(this, args);
         };
@@ -48,7 +49,7 @@ public sealed class KeyboardHook : IDisposable
         _currentId = _currentId + 1;
 
         // register the hot key.
-        if (!RegisterHotKey(_window.Handle, _currentId, (uint) modifier, (uint) key))
+        if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
             throw new InvalidOperationException("Couldn’t register the hot key.");
     }
 
@@ -88,8 +89,8 @@ public sealed class KeyboardHook : IDisposable
             if (m.Msg == WM_HOTKEY)
             {
                 // get the keys.
-                var key = (Keys) (((int) m.LParam >> 16) & 0xFFFF);
-                var modifier = (ModifierKeys) ((int) m.LParam & 0xFFFF);
+                var key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+                var modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
 
                 // invoke the event to notify the parent.
                 KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
@@ -98,7 +99,6 @@ public sealed class KeyboardHook : IDisposable
 
         public event EventHandler<KeyPressedEventArgs> KeyPressed;
     }
-
 }
 
 /// <summary>

@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 
 namespace OmronProject
 {
@@ -9,15 +7,10 @@ namespace OmronProject
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
-
-
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "SpecifyACultureInStringConversionExplicitly")]
-
-
     public partial class OEdit : TextBox
     {
-
         public enum TActivity
         {
             ActInAct,
@@ -65,68 +58,64 @@ namespace OmronProject
         public OEdit FieldUp { get; set; }
         public OEdit FieldDown { get; set; }
         public OPanel PanelHeater { get; set; }
-        
+
+        public OEdit()
+        {
+            InitializeComponent();
+
+            GotFocus += FieldGotFocus;
+            KeyPress += TestKeyPress;
+        }
+
+        private void TestKeyPress(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         [DllImport("user32.dll")]
         private static extern bool HideCaret(IntPtr hWnd);
 
         protected override void WndProc(ref Message m)
         {
-
-            if (m.Msg == 0x201 || m.Msg == 0x204 ||
-                m.Msg == 0x203) //0x201 - Left Button 0x204 - Right button
+            if (m.Msg == 0x201 || m.Msg == 0x204 || m.Msg == 0x203) //0x201 - Left Button 0x204 - Right button
             {
                 return;
             }
             base.WndProc(ref m);
         }
 
-
-        public OEdit()
-        {
-            
-            InitializeComponent();
-            
-            GotFocus += FieldGotFocus;
-           
-            
-        }
-
         private void FieldGotFocus(object sender, EventArgs args)
         {
             //   HideCaret(Handle);
             if (PanelHeater.IsActive)
-               BackColor = Color.Yellow;
+                BackColor = Color.Yellow;
             SelectionStart = TextLength;
-
         }
-
 
         private void OmronEditKeyPress(object sender, KeyPressEventArgs e)
         {
-            bool isDotChar = e.KeyChar == '.';
+            bool isDotChar = e.KeyChar == ',';
 
-            if (e.KeyChar == ',')
+            if (e.KeyChar == '.')
             {
                 e.Handled = true;
-                if (Text.IndexOf('.') < 0 && SelectionStart != 0 && TypeContent == ContentType.NumFloat)
+                if (Text.IndexOf(',') < 0 && SelectionStart != 0 && TypeContent == ContentType.NumFloat)
                 {
-                    Text += @".";
+                    Text += @",";
                     SelectionStart = Text.Length;
                 }
             }
 
-            if ((Text.IndexOf('.') >= 0 || SelectionStart == 0) && isDotChar || e.KeyChar == '-')
+            if ((Text.IndexOf(',') >= 0 || SelectionStart == 0) && isDotChar || e.KeyChar == '-')
             {
                 e.Handled = true;
             }
-            
+
             if (Text.IndexOf('0') == 0 && (e.KeyChar == '0' || !isDotChar) && SelectionStart == 1 || (SelectionStart == 0 && Text == @"0"))
             {
                 Text = "";
             }
-            BackColor=Color.Red;
-
+            BackColor = Color.Red;
         }
 
         private void CheckInput(KeyEventArgs e)
@@ -140,15 +129,15 @@ namespace OmronProject
             bool MinusPressed = e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract;
             bool ZeroPressed = e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0;
             bool BackPressed = e.KeyCode == Keys.Back;
-            bool DotInField = Text.IndexOf('.') >= 0;
-       //     bool FractIsMax = Text.Substring(Text.IndexOf('.')).Length > MaxFract;
+            bool DotInField = Text.IndexOf(',') >= 0;
+            //     bool FractIsMax = Text.Substring(Text.IndexOf('.')).Length > MaxFract;
 
             if (MissRange0_9 && MissRange0_9Numpad && !DotPressed && !MinusPressed && !BackPressed)
             {
                 e.SuppressKeyPress = true;
             }
 
-            if (DotInField && Text.Substring(Text.IndexOf('.')).Length > MaxFract && !BackPressed)
+            if (DotInField && Text.Substring(Text.IndexOf(',')).Length > MaxFract && !BackPressed)
             {
                 e.SuppressKeyPress = true;
             }
@@ -166,7 +155,7 @@ namespace OmronProject
 
             if (DotPressed && Text == @"0" && TypeContent == ContentType.NumFloat)
             {
-                Text = @"0.";
+                Text = @"0,";
                 SelectionStart = TextLength;
             }
 
@@ -190,46 +179,49 @@ namespace OmronProject
 
                  if (Text.IndexOf('0') == 0)
                     Text = @"-";
-                 else
+                else
                 {
                     Text = Text.Substring(1);
                 }
 
                 SelectionStart = TextLength;
             }
-                
         }
-
 
         private void OmronEditKeyDown(object sender, KeyEventArgs e)
         {
-           CheckInput(e);
+            CheckInput(e);
 
             switch (e.KeyCode)
             {
                 case Keys.Up:
                     FieldUp.Focus();
                     break;
+
                 case Keys.Down:
-                   FieldDown.Focus();
+                    FieldDown.Focus();
                     break;
+
                 case Keys.Escape:
                     Text = @"0";
                     SelectionStart = 0;
                     BackColor = Color.Yellow;
                     break;
+
                 case Keys.Enter:
-                    BackColor = Color.LightGreen;;
+                    BackColor = Color.LightGreen;
+                   // SelectionStart = TextLength;
                     break;
+
                 case Keys.Right:
                     ChangeValue(TypeContent, Operation.Increment);
                     break;
+
                 case Keys.Left:
-                    ChangeValue(TypeContent,Operation.Decrement);
+                    ChangeValue(TypeContent, Operation.Decrement);
                     break;
             }
         }
-
 
         private void ChangeValue(ContentType type, Operation op)
         {
@@ -238,32 +230,39 @@ namespace OmronProject
                 case ContentType.NumInt:
 
                     int i = int.Parse(Text);
-                    if (op == Operation.Increment && i < MaxError) i+=(int)Step;
-                    if (op == Operation.Decrement && i > MinError) i -=(int)Step;
+                    if (op == Operation.Increment && i < MaxError)
+                        i += (int)Step;
+                    if (op == Operation.Decrement && i > MinError)
+                        i -= (int)Step;
                     Text = i.ToString();
                     break;
+
                 case ContentType.NumFloat:
                     if (Text.Contains("."))
-                      Text=Text.Replace('.', ',');
+                        Text = Text.Replace('.', ',');
                     float f = float.Parse(Text);//TODO Format Exception
-                    if (op == Operation.Increment && f<MaxError) f+=Step;
-                    if (op == Operation.Decrement && f> MinError) f-=Step;
+                    if (op == Operation.Increment && f < MaxError)
+                        f += Step;
+                    if (op == Operation.Decrement && f > MinError)
+                        f -= Step;
                     Text = f.ToString();
                     break;
+
                 case ContentType.Automan:
                     break;
+
                 case ContentType.OnOff:
                     break;
+
                 case ContentType.Mode:
                     break;
+
                 default:
-                    MessageBox.Show(@"Error in IncValue");
+                    MessageBox.Show(@"Error in ChangeValue method");
                     break;
             }
             SelectionStart = TextLength;
         }
-
-
 
         private void OmronEditLeave(object sender, EventArgs e)
         {
@@ -271,7 +270,6 @@ namespace OmronProject
                 BackColor = Color.DarkKhaki;
             if (Text == "" || Text == @"-")
                 Text = @"0";
-
         }
 
         //private void SetFieldColor(TState state)
